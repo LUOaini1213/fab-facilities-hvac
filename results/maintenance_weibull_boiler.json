@@ -1,0 +1,217 @@
+{
+  "age_replacement": {
+    "cost_ratio_base_illustrative": 5.0,
+    "source": "Barlow & Proschan (1965) via Nakagawa (1981) eq. 2.4-2.5",
+    "sweep": [
+      {
+        "cost_ratio": 1.5,
+        "finite_optimum": false,
+        "fit": "all_intervals",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 2.0,
+        "finite_optimum": false,
+        "fit": "all_intervals",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 3.0,
+        "finite_optimum": false,
+        "fit": "all_intervals",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 5.0,
+        "finite_optimum": false,
+        "fit": "all_intervals",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 10.0,
+        "finite_optimum": false,
+        "fit": "all_intervals",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 20.0,
+        "finite_optimum": false,
+        "fit": "all_intervals",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 50.0,
+        "finite_optimum": false,
+        "fit": "all_intervals",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 1.5,
+        "finite_optimum": false,
+        "fit": "conditional_on_surviving_30_days",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 2.0,
+        "finite_optimum": false,
+        "fit": "conditional_on_surviving_30_days",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 3.0,
+        "finite_optimum": false,
+        "fit": "conditional_on_surviving_30_days",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 5.0,
+        "finite_optimum": false,
+        "fit": "conditional_on_surviving_30_days",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 10.0,
+        "finite_optimum": false,
+        "fit": "conditional_on_surviving_30_days",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 20.0,
+        "finite_optimum": false,
+        "fit": "conditional_on_surviving_30_days",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      },
+      {
+        "cost_ratio": 50.0,
+        "finite_optimum": false,
+        "fit": "conditional_on_surviving_30_days",
+        "saving_vs_run_to_failure": 0.0,
+        "t_opt_days": null
+      }
+    ]
+  },
+  "boilers": 129,
+  "conditional_on_surviving_30_days": {
+    "boilers": 129,
+    "fit": {
+      "beta": 0.5496755253,
+      "beta_ci95": [
+        0.4833130779,
+        0.6251500258
+      ],
+      "censored": 128,
+      "eta": 1139.836457,
+      "eta_ci95": [
+        858.6770565,
+        1513.056787
+      ],
+      "failures": 171,
+      "loglik": -1290.960237,
+      "loglik_exponential": -1345.647819,
+      "lr_stat_beta_eq_1": 109.3751646,
+      "n": 299,
+      "p_value_beta_eq_1": 1.343017587e-25,
+      "se_beta": 0.03608391999,
+      "se_eta": 164.7251976
+    },
+    "fit_cluster_bootstrap_by_boiler": {
+      "beta_ci": [
+        0.4982273466,
+        0.6132748142
+      ],
+      "clusters": 129,
+      "eta_ci": [
+        754.8664267,
+        1891.672227
+      ],
+      "n_boot": 2000,
+      "seed": 0,
+      "unfitted_resamples": 0
+    },
+    "intervals": 299
+  },
+  "data": "uptime from the end of one boiler failure episode to the start of the next (failed) or to the end of the observation window (censored), days; as-good-as-new after repair assumed",
+  "fit": {
+    "beta": 0.3984335186,
+    "beta_ci95": [
+      0.3621198042,
+      0.4383888064
+    ],
+    "censored": 128,
+    "eta": 485.6991646,
+    "eta_ci95": [
+      366.0105224,
+      644.5270397
+    ],
+    "failures": 304,
+    "loglik": -1964.659718,
+    "loglik_exponential": -2235.390691,
+    "lr_stat_beta_eq_1": 541.4619465,
+    "n": 432,
+    "p_value_beta_eq_1": 9.06546138e-120,
+    "se_beta": 0.01942715148,
+    "se_eta": 70.11229646
+  },
+  "fit_cluster_bootstrap_by_boiler": {
+    "beta_ci": [
+      0.354528554,
+      0.4786586037
+    ],
+    "clusters": 129,
+    "eta_ci": [
+      222.8443932,
+      1256.657394
+    ],
+    "n_boot": 2000,
+    "seed": 0,
+    "unfitted_resamples": 0
+  },
+  "intervals": 432,
+  "mean_uptime_days": 1631.772132,
+  "minimal_repair_overhaul_interval_days_at_ratio_base": {
+    "all_intervals": null,
+    "conditional_on_surviving_30_days": null
+  },
+  "naive_drop_censored": {
+    "beta": 0.5673934194,
+    "beta_ci95": [
+      0.5190937467,
+      0.6201871905
+    ],
+    "censored": 0,
+    "eta": 88.28444822,
+    "eta_ci95": [
+      71.65775592,
+      108.7690187
+    ],
+    "failures": 304,
+    "loglik": -1703.390404,
+    "loglik_exponential": -1806.119969,
+    "lr_stat_beta_eq_1": 205.4591303,
+    "n": 304,
+    "p_value_beta_eq_1": 1.344638086e-46,
+    "se_beta": 0.02575562668,
+    "se_eta": 9.398978843
+  },
+  "selection": {
+    "boilers_contributing_intervals": 129,
+    "boilers_with_at_least_one_episode": 129,
+    "boilers_with_observation_window": 346,
+    "max_intervals_one_boiler": 59,
+    "note": "only boilers with at least one failure episode in the window contribute (the interval before the first episode is not used), so boilers that never failed are absent",
+    "share_of_intervals_from_top_10pct_boilers": 0.4814814815
+  }
+}

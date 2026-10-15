@@ -1,0 +1,31 @@
+{
+  "cooling_0p4_db_mcwb": {
+    "h_kj_kg": 81.6356815,
+    "rh": 0.5841254371,
+    "tdb_c": 33.2,
+    "tdp_c": 23.93707965,
+    "twb_c": 26.30001761,
+    "v_m3_kg": 0.8948689482,
+    "w_g_kg": 18.82214178
+  },
+  "dehum_0p4_dp_mcdb": {
+    "h_kj_kg": 87.98402168,
+    "rh": 0.8747806732,
+    "tdb_c": 29.4,
+    "tdp_c": 27.1,
+    "twb_c": 27.63765869,
+    "v_m3_kg": 0.8893297818,
+    "w_g_kg": 22.85400765
+  },
+  "enthalpy_0p4_h_mcdb": {
+    "h_kj_kg": 88.8,
+    "rh": 0.7867730452,
+    "tdb_c": 31.0,
+    "tdp_c": 26.85612025,
+    "twb_c": 27.82506577,
+    "v_m3_kg": 0.8935659805,
+    "w_g_kg": 22.51725513
+  },
+  "pressure_pa": 101240.0,
+  "source": "ASHRAE Handbook-Fundamentals 2021, SINGAPORE CHANGI INTL (WMO 486980)"
+}

@@ -1,0 +1,131 @@
+{
+  "assets": {
+    "class_EXTHD_is_hard_drives_not_hvac": 285,
+    "duplicate_obj_code_rows": 2,
+    "hvac_class_assets": {
+      "AC": 3,
+      "AHU": 1,
+      "BOILER": 576,
+      "BURNER": 1,
+      "COOLTOWR": 18,
+      "FURNACE": 1,
+      "HVAC": 247,
+      "HWH": 435,
+      "PUMP": 328,
+      "SPLITIN": 2,
+      "SPLITOA": 2,
+      "SPLITOUT": 5,
+      "UNITHEAT": 1,
+      "WINDOWAC": 1
+    },
+    "hvac_commission_date_is_1900_placeholder": 365,
+    "hvac_with_parent_link": 0,
+    "rows": 148450
+  },
+  "elapsed_hours_closed": {
+    "over_365_days": 35337,
+    "p50": 35.75,
+    "p90": 1503.406667
+  },
+  "equipment_failure_funnel": {
+    "abstain_threshold": 0.87,
+    "closed": 6379,
+    "cm_orders_on_hvac_assets": 7626,
+    "episodes": 475,
+    "episodes_on_assets_without_window": 0,
+    "failure_mode_from_problem_code": 90,
+    "failure_mode_model_abstained": 438,
+    "failure_mode_predicted_from_text": 130,
+    "failure_orders": 658,
+    "in_window": 6520,
+    "new_work_excluded": 50,
+    "routine_excluded": 5671
+  },
+  "hvac_equipment_cm": {
+    "orders": 7626,
+    "routine_share": 0.7639653816,
+    "routine_task_text": 5826,
+    "with_any_problem_code_other_than_blank_or_non_applicable": 566,
+    "with_mep_problem_code": 236
+  },
+  "mapping": {
+    "opened_at_from_created_because_reported_blank": 336320,
+    "status_counts": {
+      "cancelled": 131084,
+      "closed": 2007707,
+      "open": 85239
+    },
+    "wo_type_counts": {
+      "CM": 1057279,
+      "INSP": 325318,
+      "OTHER": 742656,
+      "PM": 98777
+    }
+  },
+  "missing_required_by_column": {
+    "asset_class": 0,
+    "asset_id": 0,
+    "description": 0,
+    "opened_at": 0,
+    "site": 76917,
+    "status": 0,
+    "wo_id": 0,
+    "wo_type": 0
+  },
+  "snapshot": {
+    "download_times": {
+      "assets.parquet": {
+        "dataset": "e25p-jzfy",
+        "end_utc": "2026-10-02T08:33:14+00:00",
+        "note": "first run; times from file modification times",
+        "start_utc": "2026-10-02T08:32:44+00:00"
+      },
+      "labor_by_wo.parquet": {
+        "dataset": "xzj8-i3jk",
+        "end_utc": "2026-10-02T08:39:18+00:00",
+        "start_utc": "2026-10-02T08:37:42+00:00"
+      },
+      "work_orders.parquet": {
+        "dataset": "8sdw-8vja",
+        "end_utc": "2026-10-02T08:32:44+00:00",
+        "note": "first run; times from process start and file modification time",
+        "start_utc": "2026-10-02T08:19:04+00:00"
+      }
+    },
+    "last_created_day": "2026-09-29",
+    "rows": {
+      "assets.parquet": 148450,
+      "labor_by_wo.parquet": 1060487,
+      "work_orders.parquet": 2224030
+    },
+    "sha256": {
+      "assets.parquet": "666d05017938411f8ebbedbea18d4bfd0dc9e7736c60bc0909d3ab1fe139a642",
+      "labor_by_wo.parquet": "7f869c2870f0ac84c590dedef585c3ab6b3320f52697771eac0620dadc8cba51",
+      "work_orders.parquet": "6580591eeb826b9e4500350bfe858dca1c4e9cd88ed4067c88459f6398b8c275"
+    }
+  },
+  "validation": {
+    "by_rule": {
+      "asset_not_in_hierarchy": 0,
+      "close_time_while_open": 0,
+      "closed_before_opened": 440,
+      "closed_without_close_time": 0,
+      "cm_without_failure_mode": 942332,
+      "downtime_exceeds_elapsed": 0,
+      "duplicate_id": 0,
+      "failure_mode_on_non_cm": 0,
+      "missing_required": 76917,
+      "negative_labor": 5,
+      "unknown_failure_mode": 0,
+      "unknown_status": 0,
+      "unknown_wo_type": 0
+    },
+    "rows": 2224030,
+    "rows_with_any_issue": 1018245
+  },
+  "validation_notes": {
+    "asset_not_in_hierarchy": "asset never appears with a maintenance district",
+    "cm_with_blank_problem_code": 252106,
+    "cm_without_failure_mode": "CM orders whose problem code is not one of the 7 building-services codes (includes park-structure codes such as Structural Damage)"
+  }
+}

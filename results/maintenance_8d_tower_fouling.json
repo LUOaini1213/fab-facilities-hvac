@@ -1,0 +1,274 @@
+{
+  "differential_signatures": {
+    "ChillerPlant_bypass_leakage_025.csv": {
+      "chiller1_lift_k_mean": 6.088835847,
+      "chiller_kwh_pct": 14.41300307,
+      "condenser_supply_k": 0.9201701111,
+      "tower1_fan_speed_mean": -0.06115349899,
+      "tower1_leaving_water_k": 3.171296296e-05,
+      "tower_kwh_pct": -94.88914721
+    },
+    "ChillerPlant_coolingtower_PI.csv": {
+      "chiller1_lift_k_mean": 0.8682362465,
+      "chiller_kwh_pct": 5.62691344,
+      "condenser_supply_k": 0.0,
+      "tower1_fan_speed_mean": -0.03355795357,
+      "tower1_leaving_water_k": 4.907407387e-07,
+      "tower_kwh_pct": -33.69821673
+    },
+    "ChillerPlant_coolingtower_bias_-2.csv": {
+      "chiller1_lift_k_mean": 0.4110484138,
+      "chiller_kwh_pct": 3.666394728,
+      "condenser_supply_k": 0.0,
+      "tower1_fan_speed_mean": -0.07392486572,
+      "tower1_leaving_water_k": -1.99999638,
+      "tower_kwh_pct": -30.97976381
+    },
+    "ChillerPlant_coolingtower_bias_2.csv": {
+      "chiller1_lift_k_mean": -0.2152521755,
+      "chiller_kwh_pct": -1.490967542,
+      "condenser_supply_k": -0.0007762314815,
+      "tower1_fan_speed_mean": 0.1776705548,
+      "tower1_leaving_water_k": 1.609408417,
+      "tower_kwh_pct": 43.00702205
+    },
+    "ChillerPlant_coolingtower_fouling_065.csv": {
+      "chiller1_lift_k_mean": 0.2781439378,
+      "chiller_kwh_pct": 2.061372795,
+      "condenser_supply_k": 0.0005335833333,
+      "tower1_fan_speed_mean": 0.0440164896,
+      "tower1_leaving_water_k": 0.676357037,
+      "tower_kwh_pct": 41.02557088
+    }
+  },
+  "documented_fault": "tower 1 heat-transfer coefficient multiplied by 0.95 / 0.80 / 0.65 (LBNL documentation, Table 3)",
+  "fault": "coolingtower_fouling",
+  "fault_free_operation": {
+    "tower1_fan_off_hours_frac": 0.6886630894,
+    "tower1_fan_speed_median": 0.0,
+    "tower1_leaving_water_below_setpoint_hours_frac": 0.8486128553,
+    "tower2_on_hours_frac": 0.1244129847,
+    "tower2_status_equals_chiller2_status_hours_frac": 1.0,
+    "tower3_on_hours_frac": 0.004359325646
+  },
+  "fault_free_reference": {
+    "plant_kwh": 1236011.728,
+    "tower1_fan_full_speed_hours_frac": 0.02226281539
+  },
+  "indicator": {
+    "aggregation": "daily mean of hourly residuals (>= 12 hours)",
+    "fault_free_test_alarm_days_deployable": 0,
+    "fault_free_test_daily_score_k": {
+      "max": 0.09827673112,
+      "p50": -0.00142233438,
+      "p99": 0.09180193736
+    },
+    "fault_free_test_days": 169,
+    "inputs": [
+      "t_wb_c",
+      "t_db_c",
+      "sec_load_kw",
+      "chw_spt_c",
+      "ct_spt_c",
+      "n_chillers_on",
+      "CT_FAN_SPD_1",
+      "CT_FLOW_1",
+      "CT_STA_2",
+      "CT_STA_3"
+    ],
+    "model": "ridge, degree-2 polynomial, standardised inputs, alpha 1",
+    "split": "train odd months (fault-free only), test even months, 24 h boundary buffer",
+    "target": "tower-1 leaving water temperature (degC)",
+    "threshold_k": {
+      "deployable": 0.6979057039,
+      "zero_fa_test": 0.09827673112
+    },
+    "threshold_rule": {
+      "deployable": "99th percentile of out-of-fold daily scores on fault-free training months",
+      "zero_fa_test": "largest daily score on fault-free test days (comparison only)"
+    }
+  },
+  "paired_effects_by_severity": {
+    "065": {
+      "chiller1_lift_delta_k_mean": 0.2781439378,
+      "condenser_bypass_valve_delta_mean": -0.06689754419,
+      "condenser_supply_minus_tower1_delta_k_median": -0.4226068704,
+      "evaporator_heat_kwh_delta": -127.2313357,
+      "hours": 8759,
+      "kw_per_rt_delivered_delta_pct": 1.856313456,
+      "kwh_delta": {
+        "cdw_pump_kw": 7013.44936,
+        "chiller_kw": 7906.104347,
+        "chw_pump_kw": 496.0863031,
+        "plant_kw": 22861.82829,
+        "tower_kw": 7446.188278
+      },
+      "new_indicator_daily_alarm_rate": {
+        "deployable": 0.3668639053,
+        "zero_fa_test": 0.9763313609
+      },
+      "new_indicator_median_daily_score_k": 0.6414277579,
+      "new_indicator_test_days": 169,
+      "part_c_detection_daily_any_hour": {
+        "baseline_deployable_daily_alarm_rate": 0.1124260355,
+        "baseline_zero_fa_test_daily_alarm_rate": 0.01183431953,
+        "ml_deployable_daily_alarm_rate": 0.2485207101,
+        "ml_zero_fa_test_daily_alarm_rate": 0.550295858
+      },
+      "part_c_detection_hourly": {
+        "baseline_deployable_alarm_rate": 0.005917159763,
+        "baseline_far1_alarm_rate": 0.008875739645,
+        "ml_deployable_alarm_rate": 0.0692800789,
+        "ml_far1_alarm_rate": 0.5520216963
+      },
+      "plant_kwh_delta_pct": 1.849644932,
+      "tower1_above_setpoint_0p5k_hours_frac": {
+        "fault": 0.136659436,
+        "fault_free": 0.01586939148
+      },
+      "tower1_fan_at_full_speed_hours_frac": {
+        "fault": 0.1464779084,
+        "fault_free": 0.02226281539
+      },
+      "tower1_fan_speed_delta_mean": 0.0440164896,
+      "tower1_leaving_water_delta_k": {
+        "max": 3.218251713,
+        "mean": 0.6977600261,
+        "median": 0.676357037,
+        "p95": 1.426315003
+      },
+      "tower1_water_flow_delta_gpm_mean": 10.18929853,
+      "tower2_leaving_water_delta_k_when_on": {
+        "hours_on": 995,
+        "median": -0.0004859166667
+      },
+      "tower2_on_hours_frac": {
+        "fault": 0.1243406782,
+        "fault_free": 0.1244129847
+      }
+    },
+    "080": {
+      "chiller1_lift_delta_k_mean": 0.1110033221,
+      "condenser_bypass_valve_delta_mean": -0.03487493038,
+      "condenser_supply_minus_tower1_delta_k_median": -0.2214937222,
+      "evaporator_heat_kwh_delta": -40.65777056,
+      "hours": 8759,
+      "kw_per_rt_delivered_delta_pct": 0.8401487934,
+      "kwh_delta": {
+        "cdw_pump_kw": 3257.915974,
+        "chiller_kw": 2571.526916,
+        "chw_pump_kw": 166.5874015,
+        "plant_kw": 10355.66478,
+        "tower_kw": 4359.634493
+      },
+      "new_indicator_daily_alarm_rate": {
+        "deployable": 0.0,
+        "zero_fa_test": 0.8934911243
+      },
+      "new_indicator_median_daily_score_k": 0.2895412712,
+      "new_indicator_test_days": 169,
+      "part_c_detection_daily_any_hour": {
+        "baseline_deployable_daily_alarm_rate": 0.1301775148,
+        "baseline_zero_fa_test_daily_alarm_rate": 0.005917159763,
+        "ml_deployable_daily_alarm_rate": 0.02366863905,
+        "ml_zero_fa_test_daily_alarm_rate": 0.2840236686
+      },
+      "part_c_detection_hourly": {
+        "baseline_deployable_alarm_rate": 0.006903353057,
+        "baseline_far1_alarm_rate": 0.01010848126,
+        "ml_deployable_alarm_rate": 0.001972386588,
+        "ml_far1_alarm_rate": 0.275887574
+      },
+      "plant_kwh_delta_pct": 0.8378290066,
+      "tower1_above_setpoint_0p5k_hours_frac": {
+        "fault": 0.05845416143,
+        "fault_free": 0.01586939148
+      },
+      "tower1_fan_at_full_speed_hours_frac": {
+        "fault": 0.07409521635,
+        "fault_free": 0.02226281539
+      },
+      "tower1_fan_speed_delta_mean": 0.02670363474,
+      "tower1_leaving_water_delta_k": {
+        "max": 1.511872657,
+        "mean": 0.3369843421,
+        "median": 0.3524516574,
+        "p95": 0.6873856694
+      },
+      "tower1_water_flow_delta_gpm_mean": 4.817897745,
+      "tower2_leaving_water_delta_k_when_on": {
+        "hours_on": 995,
+        "median": -0.0002884259259
+      },
+      "tower2_on_hours_frac": {
+        "fault": 0.1243768314,
+        "fault_free": 0.1244129847
+      }
+    },
+    "095": {
+      "chiller1_lift_delta_k_mean": 0.02015969963,
+      "condenser_bypass_valve_delta_mean": -0.008042244306,
+      "condenser_supply_minus_tower1_delta_k_median": -0.05309849074,
+      "evaporator_heat_kwh_delta": 2.156092182,
+      "hours": 8759,
+      "kw_per_rt_delivered_delta_pct": 0.1637729107,
+      "kwh_delta": {
+        "cdw_pump_kw": 675.5238859,
+        "chiller_kw": 349.5081155,
+        "chw_pump_kw": 35.18679087,
+        "plant_kw": 2027.924884,
+        "tower_kw": 967.7060915
+      },
+      "new_indicator_daily_alarm_rate": {
+        "deployable": 0.0,
+        "zero_fa_test": 0.3017751479
+      },
+      "new_indicator_median_daily_score_k": 0.0729089424,
+      "new_indicator_test_days": 169,
+      "part_c_detection_daily_any_hour": {
+        "baseline_deployable_daily_alarm_rate": 0.1065088757,
+        "baseline_zero_fa_test_daily_alarm_rate": 0.01775147929,
+        "ml_deployable_daily_alarm_rate": 0.0,
+        "ml_zero_fa_test_daily_alarm_rate": 0.02366863905
+      },
+      "part_c_detection_hourly": {
+        "baseline_deployable_alarm_rate": 0.005917159763,
+        "baseline_far1_alarm_rate": 0.009861932939,
+        "ml_deployable_alarm_rate": 0.0,
+        "ml_far1_alarm_rate": 0.1548323471
+      },
+      "plant_kwh_delta_pct": 0.1640700357,
+      "tower1_above_setpoint_0p5k_hours_frac": {
+        "fault": 0.02351866651,
+        "fault_free": 0.01586939148
+      },
+      "tower1_fan_at_full_speed_hours_frac": {
+        "fault": 0.02899874415,
+        "fault_free": 0.02226281539
+      },
+      "tower1_fan_speed_delta_mean": 0.006033790161,
+      "tower1_leaving_water_delta_k": {
+        "max": 0.5072188333,
+        "mean": 0.07512905018,
+        "median": 0.08061255556,
+        "p95": 0.1599957741
+      },
+      "tower1_water_flow_delta_gpm_mean": 1.022816047,
+      "tower2_leaving_water_delta_k_when_on": {
+        "hours_on": 995,
+        "median": -5.907407399e-06
+      },
+      "tower2_on_hours_frac": {
+        "fault": 0.1244072763,
+        "fault_free": 0.1244129847
+      }
+    }
+  },
+  "part_c_fault_free_test_days_alarming_any_hour": {
+    "baseline_deployable": 20,
+    "baseline_zero_fa_test": 0,
+    "ml_deployable": 0,
+    "ml_zero_fa_test": 0,
+    "test_days": 169
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "daily": {
+    "rule": "a test day alarms when any of its hours alarms",
+    "zero_fa_test_threshold": {
+      "baseline": 20.00087599,
+      "ml": 0.9999640957
+    },
+    "zero_fa_test_threshold_rule": "largest daily score on fault-free test days (comparison only)"
+  },
+  "diagnosis": {
+    "baseline_deployable": {
+      "accuracy_9class": 0.2102851742,
+      "fault_windows_correct_type": 0.1762070148,
+      "macro_f1_9class": 0.2015497451,
+      "normal_recall": 0.9940828402
+    },
+    "baseline_far1": {
+      "accuracy_9class": 0.2127403846,
+      "fault_windows_correct_type": 0.1789404854,
+      "macro_f1_9class": 0.203817152,
+      "normal_recall": 0.9901380671
+    },
+    "ml_argmax": {
+      "accuracy_9class": 0.9560322156,
+      "fault_windows_correct_type": 0.9719899666,
+      "macro_f1_9class": 0.9305664133,
+      "normal_recall": 0.5890039448
+    },
+    "ml_deployable": {
+      "accuracy_9class": 0.6668721236,
+      "fault_windows_correct_type": 0.6523883029,
+      "macro_f1_9class": 0.6571453653,
+      "normal_recall": 1.0
+    },
+    "ml_far1": {
+      "accuracy_9class": 0.8351208087,
+      "fault_windows_correct_type": 0.8283809279,
+      "macro_f1_9class": 0.829274661,
+      "normal_recall": 0.9901380671
+    }
+  },
+  "diagnosis_note": "ml_argmax: 9-class argmax, no detection threshold; <method>_<point>: two-stage, normal below the detection threshold of that operating point, otherwise the most likely fault (ml) or the nearest fault signature (baseline)",
+  "exogenous_inputs": [
+    "t_db_c",
+    "t_wb_c",
+    "sec_load_kw",
+    "chw_spt_c",
+    "n_chillers_on"
+  ],
+  "fault_free_energy_split": {
+    "chiller_share": 0.310301168,
+    "plant_kwh": 1236011.728,
+    "pumps_share_chw_and_cdw": 0.6750144125,
+    "towers_share": 0.01468441969
+  },
+  "fault_free_plant": {
+    "kw_per_rt_delivered": 4.911642947,
+    "kwe_per_kwc_delivered": 1.396601719,
+    "load_weighted_chws_c": 8.322981017,
+    "mees_limit_kwe_per_kwc_at_that_chws": 0.185,
+    "ratio_to_mees_limit": 7.549198484
+  },
+  "n_features_ml": 119,
+  "n_test_windows": 97344,
+  "n_train_windows": 105960,
+  "realised_false_alarm_rate_on_test_normal": {
+    "baseline": {
+      "deployable": 0.005917159763,
+      "far1": 0.009861932939
+    },
+    "ml": {
+      "deployable": 0.0,
+      "far1": 0.009861932939
+    }
+  },
+  "residual_targets": [
+    "plant_kw",
+    "chiller_kw",
+    "chiller1_cop",
+    "ct1_approach_k",
+    "ct1_minus_spt_k",
+    "cdw_supply_minus_ct1_k",
+    "chl1_sw_minus_pri_sw_k",
+    "chw_supply_err_k",
+    "chl1_lift_k",
+    "heat_balance_pct",
+    "sec_dp_err_pct",
+    "twv_ctrl",
+    "ct1_fan_spd",
+    "sec_pump_spd",
+    "CT_FAN_SPD_1__std",
+    "TWV_CTRL__std"
+  ],
+  "season_block_splits": {
+    "train_jan_jun_test_jul_dec": {
+      "diagnosis": {
+        "baseline_deployable": {
+          "accuracy_9class": 0.2300728785,
+          "fault_windows_correct_type": 0.1971751075,
+          "macro_f1_9class": 0.1955213405,
+          "normal_recall": 0.9867216117
+        },
+        "baseline_far1": {
+          "accuracy_9class": 0.1896558303,
+          "fault_windows_correct_type": 0.1548514891,
+          "macro_f1_9class": 0.1570027812,
+          "normal_recall": 0.9901556777
+        },
+        "ml_argmax": {
+          "accuracy_9class": 0.8372825092,
+          "fault_windows_correct_type": 0.8542064819,
+          "macro_f1_9class": 0.7554986528,
+          "normal_recall": 0.4480311355
+        },
+        "ml_deployable": {
+          "accuracy_9class": 0.5946371337,
+          "fault_windows_correct_type": 0.5773510909,
+          "macro_f1_9class": 0.5514118851,
+          "normal_recall": 0.9922161172
+        },
+        "ml_far1": {
+          "accuracy_9class": 0.6117120726,
+          "fault_windows_correct_type": 0.5952580029,
+          "macro_f1_9class": 0.564552109,
+          "normal_recall": 0.9901556777
+        }
+      },
+      "n_test_windows": 104832,
+      "n_train_windows": 104232,
+      "realised_false_alarm_rate_on_test_normal": {
+        "baseline": {
+          "deployable": 0.01327838828,
+          "far1": 0.009844322344
+        },
+        "ml": {
+          "deployable": 0.007783882784,
+          "far1": 0.009844322344
+        }
+      },
+      "thresholds": {
+        "baseline": {
+          "deployable": 3.712388419,
+          "far1": 6.135599715
+        },
+        "ml": {
+          "deployable": 0.9999948511,
+          "far1": 0.9999922108
+        }
+      }
+    },
+    "train_jul_dec_test_jan_jun": {
+      "diagnosis": {
+        "baseline_deployable": {
+          "accuracy_9class": 0.2623758535,
+          "fault_windows_correct_type": 0.2310035625,
+          "macro_f1_9class": 0.2305281209,
+          "normal_recall": 0.9839385475
+        },
+        "baseline_far1": {
+          "accuracy_9class": 0.222784761,
+          "fault_windows_correct_type": 0.1894178609,
+          "macro_f1_9class": 0.2020780153,
+          "normal_recall": 0.9902234637
+        },
+        "ml_argmax": {
+          "accuracy_9class": 0.7170138889,
+          "fault_windows_correct_type": 0.7443122014,
+          "macro_f1_9class": 0.6305172876,
+          "normal_recall": 0.08915270019
+        },
+        "ml_deployable": {
+          "accuracy_9class": 0.600946617,
+          "fault_windows_correct_type": 0.6005789005,
+          "macro_f1_9class": 0.5476808901,
+          "normal_recall": 0.6094040968
+        },
+        "ml_far1": {
+          "accuracy_9class": 0.4623583954,
+          "fault_windows_correct_type": 0.4394077403,
+          "macro_f1_9class": 0.4246309818,
+          "normal_recall": 0.9902234637
+        }
+      },
+      "n_test_windows": 103104,
+      "n_train_windows": 105984,
+      "realised_false_alarm_rate_on_test_normal": {
+        "baseline": {
+          "deployable": 0.01606145251,
+          "far1": 0.009776536313
+        },
+        "ml": {
+          "deployable": 0.3905959032,
+          "far1": 0.009776536313
+        }
+      },
+      "thresholds": {
+        "baseline": {
+          "deployable": 2.054607559,
+          "far1": 2.788933394
+        },
+        "ml": {
+          "deployable": 0.9999030801,
+          "far1": 0.999999986
+        }
+      }
+    }
+  },
+  "split": "train = odd months, test = even months, 24 h boundary buffer on test",
+  "thresholds": {
+    "baseline": {
+      "deployable": 2.579699528,
+      "far1": 2.154116304
+    },
+    "ml": {
+      "deployable": 0.9999992774,
+      "far1": 0.9998217244
+    }
+  },
+  "window": "1 hour"
+}

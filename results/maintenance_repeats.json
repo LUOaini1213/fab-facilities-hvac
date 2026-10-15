@@ -1,0 +1,22 @@
+{
+  "boilers": {
+    "assets_with_episodes": 129,
+    "episodes": 433,
+    "episodes_with_known_mode": 147,
+    "max_episodes_one_boiler": 59,
+    "repeat_any_mode": 133,
+    "repeat_any_mode_share": 0.3071593533,
+    "repeat_same_known_mode": 17,
+    "repeat_same_known_mode_share": 0.03926096998,
+    "share_of_episodes_in_top_10pct_of_boilers_with_episodes": 0.480369515
+  },
+  "definition": "episode starting within 30 days after the previous episode on the same asset ended",
+  "no_heat_calls_per_building": {
+    "buildings": 556,
+    "episodes": 1338,
+    "orders": 1605,
+    "repeat_within_30_days_share": 0.1524663677,
+    "repeat_within_7_days_share": 0.06427503737,
+    "share_of_episodes_in_top_10pct_buildings": 0.2974588939
+  }
+}

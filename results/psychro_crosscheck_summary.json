@@ -1,0 +1,27 @@
+{
+  "coolprop_version": "8.0.0",
+  "h": {
+    "max_abs_diff": 700.5945249,
+    "max_rel_diff": 0.003509408724,
+    "mean_diff": -163.6560084,
+    "unit": "J/kg"
+  },
+  "n_points": 72,
+  "psychrolib_version": "2.5.0",
+  "tdp": {
+    "max_abs_diff": 0.01363795056,
+    "mean_diff": -0.002501378882,
+    "unit": "K"
+  },
+  "twb": {
+    "max_abs_diff": 0.02392239831,
+    "mean_diff": 0.006188752006,
+    "unit": "K"
+  },
+  "w": {
+    "max_abs_diff": 0.0003259930177,
+    "max_rel_diff": 0.005511920595,
+    "mean_diff": -7.04177755e-05,
+    "unit": "kg/kg"
+  }
+}

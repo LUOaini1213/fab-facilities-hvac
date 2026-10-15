@@ -1,0 +1,166 @@
+{
+  "cases": {
+    "cooling_0p4_db_mcwb": {
+      "mau": {
+        "latent_kw": 108.4765865,
+        "m_da_kg_s": 3.687747169,
+        "reheat_kw": 28.48228734,
+        "sensible_kw": 85.63806127,
+        "total_kw": 194.1146478,
+        "total_rt": 55.19555346,
+        "w_coil": 0.007344087057,
+        "w_out": 0.01882214178
+      },
+      "mau_share_of_total": 0.4190969107,
+      "recirculation": {
+        "dcc_kw": 269.0590069,
+        "dcc_rt": 76.50561649,
+        "ffu_fan_kw": 125.1,
+        "internal_sensible_kw": 284.1,
+        "lighting_kw": 9.0,
+        "mau_supply_credit_kw": 15.04099314,
+        "tool_kw": 150.0
+      },
+      "total_cooling_kw": 463.1736546,
+      "total_cooling_rt": 131.7011699
+    },
+    "dehum_0p4_dp_mcdb": {
+      "mau": {
+        "latent_kw": 146.1766035,
+        "m_da_kg_s": 3.687747169,
+        "reheat_kw": 28.48228734,
+        "sensible_kw": 71.34911779,
+        "total_kw": 217.5257213,
+        "total_rt": 61.85237805,
+        "w_coil": 0.007344087057,
+        "w_out": 0.02285400765
+      },
+      "mau_share_of_total": 0.4470459279,
+      "recirculation": {
+        "dcc_kw": 269.0590069,
+        "dcc_rt": 76.50561649,
+        "ffu_fan_kw": 125.1,
+        "internal_sensible_kw": 284.1,
+        "lighting_kw": 9.0,
+        "mau_supply_credit_kw": 15.04099314,
+        "tool_kw": 150.0
+      },
+      "total_cooling_kw": 486.5847281,
+      "total_cooling_rt": 138.3579945
+    },
+    "enthalpy_0p4_h_mcdb": {
+      "mau": {
+        "latent_kw": 143.169328,
+        "m_da_kg_s": 3.687747169,
+        "reheat_kw": 28.48228734,
+        "sensible_kw": 77.36551505,
+        "total_kw": 220.534843,
+        "total_rt": 62.70800714,
+        "w_coil": 0.007344087057,
+        "w_out": 0.02251725513
+      },
+      "mau_share_of_total": 0.4504444716,
+      "recirculation": {
+        "dcc_kw": 269.0590069,
+        "dcc_rt": 76.50561649,
+        "ffu_fan_kw": 125.1,
+        "internal_sensible_kw": 284.1,
+        "lighting_kw": 9.0,
+        "mau_supply_credit_kw": 15.04099314,
+        "tool_kw": 150.0
+      },
+      "total_cooling_kw": 489.5938499,
+      "total_cooling_rt": 139.2136236
+    }
+  },
+  "floor_area_m2": 600.0,
+  "governing_case_mau_latent": "dehum_0p4_dp_mcdb",
+  "governing_case_total_cooling": "enthalpy_0p4_h_mcdb",
+  "inputs": {
+    "cleanliness": {
+      "iso_class": 5,
+      "particle_size_um": 0.5
+    },
+    "mau": {
+      "coil_leaving_db_above_dp_k": 1.0,
+      "mau_supply_tdb_c": 18.0,
+      "moisture_gain_kg_s": 0.0002,
+      "oa_flow_m3s_at_coil_leaving": 3.0
+    },
+    "plant_example": {
+      "cdw_pump_kw": 80.0,
+      "chiller_kw": 560.0,
+      "chw_pump_kw": 70.0,
+      "chws_c": 6.5,
+      "cooling_kw": 4000.0,
+      "installed_capacity_kw": 7000.0,
+      "tower_kw": 45.0
+    },
+    "recirculation": {
+      "lighting_w_m2": 15.0,
+      "tool_heat_to_air_kw": 150.0
+    },
+    "room": {
+      "clear_height_m": 4.0,
+      "length_m": 40.0,
+      "rh": 0.45,
+      "tdb_c": 22.0,
+      "width_m": 15.0
+    },
+    "tower_example": {
+      "t_water_in_c": 37.0,
+      "t_water_out_c": 31.5,
+      "t_wb_c": 27.5
+    },
+    "unidirectional": {
+      "ceiling_coverage": 1.0,
+      "face_velocity_m_s": 0.4,
+      "ffu_face_area_m2": 0.72,
+      "ffu_power_w": 150.0
+    },
+    "well_mixed_support_area": {
+      "final_filter_efficiency": 0.9997,
+      "generation_sweep_per_s": [
+        10000.0,
+        30000.0,
+        100000.0,
+        300000.0,
+        1000000.0,
+        3000000.0
+      ],
+      "iso_class": 7,
+      "oa_fraction": 0.1,
+      "oa_prefilter_efficiency": 0.9,
+      "outdoor_conc_per_m3": 30000000.0,
+      "particle_size_um": 0.5,
+      "room_volume_m3": 1200.0
+    }
+  },
+  "inputs_file": "examples/bay_example.json (illustrative inputs)",
+  "iso_limit_per_m3": 3516.757246,
+  "mau_coil_leaving_tdb_c": 10.42542376,
+  "mau_supply_dp_required_c": 9.425423755,
+  "mau_supply_w_required_g_kg": 7.344087057,
+  "mv_min_chw_delta_t_k_at_sensor_limits": 1.58113883,
+  "plant": {
+    "cop": 5.298013245,
+    "kw_per_rt": 0.6638060037,
+    "kwe_per_kwc": 0.18875,
+    "mees": {
+      "limit_kwe_per_kwc": 0.191,
+      "margin_kwe_per_kwc": 0.00225,
+      "verdict": "PASS"
+    }
+  },
+  "room_volume_m3": 2400.0,
+  "tower": {
+    "approach_k": 4.0,
+    "effectiveness": 0.5789473684,
+    "range_k": 5.5
+  },
+  "unidirectional": {
+    "ach": 360.0,
+    "airflow_m3s": 240.0,
+    "ffu_count": 834
+  }
+}

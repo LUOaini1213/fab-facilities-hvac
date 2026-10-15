@@ -1,0 +1,45 @@
+{
+  "censored_as_failures": {
+    "b10_median_days": 261.65921,
+    "beta_bias_pct": 24.851572,
+    "beta_mean": 2.2473283,
+    "beta_median": 2.2077132,
+    "eta_bias_pct": -26.813543,
+    "eta_mean": 731.86457,
+    "eta_median": 732.54289
+  },
+  "censored_mle": {
+    "b10_median_days": 288.66781,
+    "beta_bias_pct": 5.2765877,
+    "beta_ci95_coverage": 0.9225,
+    "beta_mean": 1.8949786,
+    "beta_median": 1.8454711,
+    "eta_bias_pct": 0.69603217,
+    "eta_ci95_coverage": 0.94,
+    "eta_mean": 1006.9603,
+    "eta_median": 986.25632,
+    "lr_test_rejects_beta_eq_1_frac": 0.88
+  },
+  "design": {
+    "censoring_time_days": [
+      300.0,
+      1500.0
+    ],
+    "data_sets": 400,
+    "seed": 20261002,
+    "true_beta": 1.8,
+    "true_eta_days": 1000.0,
+    "units_per_set": 40
+  },
+  "drop_censored": {
+    "b10_median_days": 217.90175,
+    "beta_bias_pct": 18.047673,
+    "beta_mean": 2.1248581,
+    "beta_median": 2.0657371,
+    "eta_bias_pct": -34.579828,
+    "eta_mean": 654.20172,
+    "eta_median": 648.21709
+  },
+  "mean_censored_fraction": 0.4625,
+  "true_b10_days": 286.44634
+}

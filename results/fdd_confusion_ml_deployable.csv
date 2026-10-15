@@ -1,0 +1,10 @@
+true\pred,normal,bypass_leakage,bypass_stuck,chiller_bias,chiller_fouling,coolingtower_PI,coolingtower_bias,coolingtower_fouling,secondary_chilled_water_pressure_bias
+normal,4056,0,0,0,0,0,0,0,0
+bypass_leakage,0,12168,0,0,0,0,0,0,0
+bypass_stuck,186,0,7926,0,0,0,0,0,0
+chiller_bias,31,0,0,16193,0,0,0,0,0
+chiller_fouling,503,0,0,1,7608,0,0,0,0
+coolingtower_PI,1629,0,0,0,0,2409,18,0,0
+coolingtower_bias,2460,0,0,0,0,0,13764,0,0
+coolingtower_fouling,11879,0,0,0,0,69,0,220,0
+secondary_chilled_water_pressure_bias,15652,0,0,0,0,0,0,0,572

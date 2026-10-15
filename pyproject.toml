@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fabhvac"
+version = "0.1.0"
+description = "Cleanroom and chiller-plant HVAC calculations, an Excel VBA port (parity check scripted, not yet run), chiller-plant fault detection on the LBNL FDD dataset, and maintenance analytics"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "PsychroLib==2.5.0",
+    "numpy==2.4.6",
+    "pandas==3.0.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.1.1",
+    "CoolProp==8.0.0",
+    "scipy==1.17.1",
+]
+fdd = [
+    "scikit-learn==1.9.1",
+    "pyarrow==25.0.1",
+]
+excel = [
+    "pywin32==312; sys_platform == 'win32'",
+]
+
+[tool.setuptools]
+packages = ["fabhvac", "fabhvac.fdd", "fabhvac.maintenance"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

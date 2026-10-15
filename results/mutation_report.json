@@ -1,0 +1,665 @@
+{
+  "equivalent": [
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "mees_table_edge",
+      "status": "equivalent_survived"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_classifier_seed",
+      "status": "equivalent_survived"
+    }
+  ],
+  "killed": 127,
+  "mutants": [
+    {
+      "file": "fabhvac/cleanroom.py",
+      "id": "iso_exponent",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/cleanroom.py",
+      "id": "iso_ratio_inverted",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/cleanroom.py",
+      "id": "iso_max_class",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/cleanroom.py",
+      "id": "round_sig_off_by_one",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/cleanroom.py",
+      "id": "ffu_no_float_guard",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/cleanroom.py",
+      "id": "ffu_floor",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/cleanroom.py",
+      "id": "ach_minutes",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/cleanroom.py",
+      "id": "wm_recirc_fraction",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/cleanroom.py",
+      "id": "wm_ignore_prefilter",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/cleanroom.py",
+      "id": "wm_required_sign",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/cleanroom.py",
+      "id": "wm_eta_upper_bound",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/units.py",
+      "id": "rt_nea_rounded",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/units.py",
+      "id": "f_to_c_factor",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/units.py",
+      "id": "cp_chw",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "kwrt_conv_inverted",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "mees_round_nearest",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "mees_no_noise_guard",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "mees_step",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "mees_table_edge",
+      "status": "equivalent_survived"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "mees_table_edge_10",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "mees_space_tail",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "mees_table_typo",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "mees_scope_strict",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "mees_scope_glycol",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "mees_pass_strict",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "hb_denominator",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "hb_tolerance_strict",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "hb_fraction_strict",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "hb_keep_nonfinite",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "mv_linear_sum",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "motor_eff_dropped",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/tower.py",
+      "id": "ct_eff_denominator",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/tower.py",
+      "id": "ct_approach_swapped",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/loads.py",
+      "id": "mau_mass_at_outdoor",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/loads.py",
+      "id": "mau_split_wrong_temp",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/loads.py",
+      "id": "mau_reheat_wrong_w",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/loads.py",
+      "id": "mau_no_supersat_check",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/loads.py",
+      "id": "supply_w_sign",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/loads.py",
+      "id": "coil_db_below_dp",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/loads.py",
+      "id": "fan_kw_units",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/loads.py",
+      "id": "mau_credit_sign",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/psychro.py",
+      "id": "airstate_tdp_from_twb",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/psychro.py",
+      "id": "state_twb_uses_rh",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/data.py",
+      "id": "fdd_wb_db_unswapped",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/data.py",
+      "id": "fdd_cp_evap",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/data.py",
+      "id": "fdd_cond_dt_sign",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/data.py",
+      "id": "fdd_plant_no_tower",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/data.py",
+      "id": "fdd_no_secondary_pumps",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/data.py",
+      "id": "fdd_hb_denominator",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/data.py",
+      "id": "fdd_gpm_factor",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/data.py",
+      "id": "fdd_std_ddof",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/data.py",
+      "id": "fdd_hb_tol_strict",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/data.py",
+      "id": "fdd_parse_pct_sign",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_split_parity",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_split_no_buffer",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_far_ceil",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_alarm_ge",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_mad_constant",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_tail_scale_median",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_stat_mean",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_diag_include_normal",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_signature_ignore_alarm",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_diag_argmax",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_confusion_transposed",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_features_leak_labels",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_score_inverted",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_classifier_seed",
+      "status": "equivalent_survived"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_season_swap",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_season_no_buffer",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_season_end_offset",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_season_june_second_half",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_two_stage_ge",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_two_stage_argmax_all",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_diag_normal_recall_all",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_diag_fault_incl_normal",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/fdd/models.py",
+      "id": "fdd_daily_mean_not_max",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/psychro.py",
+      "id": "psychro_h_units",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/psychro.py",
+      "id": "psychro_h_no_sat_check",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/vba_reference.py",
+      "id": "vba_ref_mees_space_flag",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_profile_sign",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_bisect_dir",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_eta_no_r",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_ll_cens_as_fail",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_hessian_cross",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_ci_z",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_lr_df",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_ar_cost_swap",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_ar_target",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_ar_equal_cost",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_gl_half",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_mean_life",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_minrep",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_boot_rows",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/weibull.py",
+      "id": "maint_wb_boot_level",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/reliability.py",
+      "id": "maint_rel_per_year_8760",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/textclass.py",
+      "id": "maint_tc_abstain_strict",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/textclass.py",
+      "id": "maint_tc_abstain_min_proba",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/textclass.py",
+      "id": "maint_tc_thr_target_strict",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/textclass.py",
+      "id": "maint_tc_thr_cover_strict",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/textclass.py",
+      "id": "maint_tc_wilson_centre",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/textclass.py",
+      "id": "maint_tc_wilson_den",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/workorder.py",
+      "id": "maint_wo_dup_first",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/workorder.py",
+      "id": "maint_wo_downtime_eq",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/workorder.py",
+      "id": "maint_wo_closed_before",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/workorder.py",
+      "id": "maint_wo_path_order",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/reliability.py",
+      "id": "maint_rel_merge_strict",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/reliability.py",
+      "id": "maint_rel_window_end",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/reliability.py",
+      "id": "maint_rel_availability",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/reliability.py",
+      "id": "maint_rel_repeat_strict",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/reliability.py",
+      "id": "maint_rel_pareto_vital",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/reliability.py",
+      "id": "maint_rel_uptime_from_start",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/textclass.py",
+      "id": "maint_tc_accuracy_covered",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/textclass.py",
+      "id": "maint_tc_unseen_raw",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/textclass.py",
+      "id": "maint_tc_split_overlap",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/textclass.py",
+      "id": "maint_tc_macro_absent",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/condition.py",
+      "id": "maint_cond_two_sided",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/condition.py",
+      "id": "maint_cond_quantile",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/llm.py",
+      "id": "maint_llm_accept_any",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/llm.py",
+      "id": "maint_llm_temperature",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/llm.py",
+      "id": "maint_llm_batch_misaligned",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/amps.py",
+      "id": "maint_amps_brkd_not_cm",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/amps.py",
+      "id": "maint_amps_ppm_ignored",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/amps.py",
+      "id": "maint_amps_gt_completed",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/amps.py",
+      "id": "maint_amps_mode_any_type",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/amps.py",
+      "id": "maint_amps_opened_created",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/amps.py",
+      "id": "maint_amps_closed_any",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/amps.py",
+      "id": "maint_amps_no_blowdown",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/amps.py",
+      "id": "maint_amps_no_clog_rule",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/maintenance/amps.py",
+      "id": "maint_amps_least_frequent",
+      "status": "killed"
+    }
+  ],
+  "not_applied": [],
+  "survivors": [],
+  "total_applied": 127
+}

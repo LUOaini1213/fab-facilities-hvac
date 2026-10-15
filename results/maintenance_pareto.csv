@@ -1,0 +1,22 @@
+metric,failure_mode,value,share,cum_share,vital_few
+orders,Clogged,9862,0.2527875324,0.2527875324,True
+orders,Leaking,9839,0.2521979853,0.5049855176,True
+orders,No Water,5453,0.1397739215,0.6447594392,True
+orders,Not working electrical,4326,0.1108861149,0.755645554,True
+orders,No Heat,3340,0.08561248814,0.8412580422,True
+orders,No Light,3235,0.08292107759,0.9241791198,False
+orders,Will not turn off,2958,0.07582088022,1,False
+restore_h,Leaking,6620340.75,0.2797632512,0.2797632512,True
+restore_h,Clogged,4781598.367,0.2020614279,0.4818246791,True
+restore_h,Not working electrical,3524643.2,0.1489448471,0.6307695262,True
+restore_h,No Light,2780589,0.1175025045,0.7482720307,True
+restore_h,No Water,2525129.45,0.1067072604,0.8549792912,True
+restore_h,No Heat,2254500.783,0.09527099779,0.9502502889,False
+restore_h,Will not turn off,1177281.283,0.04974971105,1,False
+median_restore_h,Leaking,146.5833333,,,
+median_restore_h,Clogged,109,,,
+median_restore_h,No Water,120.05,,,
+median_restore_h,Will not turn off,99.075,,,
+median_restore_h,Not working electrical,189.4166667,,,
+median_restore_h,No Light,194.4666667,,,
+median_restore_h,No Heat,143.7166667,,,

@@ -1,0 +1,157 @@
+{
+  "abstain": {
+    "accuracy_on_covered": 0.9503437739,
+    "coverage": 0.5490004194,
+    "rule": "smallest top-probability threshold (grid 0.00-0.99) at which validation-year accuracy on the labelled orders is >= 0.95; model trained on the training years; threshold then applied to the refitted model",
+    "target_accuracy": 0.95,
+    "threshold": 0.87,
+    "validation_hvac_trades": {
+      "coverage": 0.6153846154,
+      "n": 143
+    }
+  },
+  "fit_seconds": 214.6054759,
+  "label_counts": {
+    "test": {
+      "Clogged": 5066,
+      "Leaking": 4938,
+      "No Heat": 1701,
+      "No Light": 1498,
+      "No Water": 2831,
+      "Not working electrical": 2142,
+      "Will not turn off": 1620
+    },
+    "train": {
+      "Clogged": 18995,
+      "Leaking": 21601,
+      "No Heat": 8181,
+      "No Light": 9743,
+      "No Water": 11428,
+      "Not working electrical": 12669,
+      "Will not turn off": 5381
+    }
+  },
+  "labels": [
+    "Leaking",
+    "Clogged",
+    "No Water",
+    "Will not turn off",
+    "Not working electrical",
+    "No Light",
+    "No Heat"
+  ],
+  "majority_class_test_accuracy": 0.2559102849,
+  "model": "TF-IDF word 1-2-grams + char_wb 3-5-grams, multinomial logistic regression, balanced class weights, C = 1 (fixed, not searched)",
+  "population": "corrective (CM) orders whose problem code is one of the labels, non-empty description",
+  "split": {
+    "n_test": 19796,
+    "n_train": 87998,
+    "n_validation": 7153,
+    "test": "created >= 2024-01-01",
+    "train": "created < 2023-01-01",
+    "validation": "2023-01-01 <= created < 2024-01-01"
+  },
+  "test": {
+    "all": {
+      "ml": {
+        "accuracy": 0.837744999,
+        "accuracy_ci95_wilson": [
+          0.832543678,
+          0.842815265
+        ],
+        "accuracy_on_covered": 0.837744999,
+        "coverage": 1.0,
+        "macro_f1": 0.820203973,
+        "n": 19796
+      },
+      "ml_with_abstain": {
+        "accuracy": 0.5435946656,
+        "accuracy_on_covered": 0.9489417989,
+        "coverage": 0.5728429986,
+        "macro_f1": 0.6399641513,
+        "n": 19796
+      },
+      "n": 19796,
+      "rules": {
+        "accuracy": 0.7130733482,
+        "accuracy_on_covered": 0.8410390848,
+        "coverage": 0.8478480501,
+        "macro_f1": 0.7500325344,
+        "n": 19796
+      }
+    },
+    "hvac_trades": {
+      "ml": {
+        "accuracy": 0.8796498906,
+        "accuracy_ci95_wilson": [
+          0.8466106999,
+          0.9063597487
+        ],
+        "accuracy_on_covered": 0.8796498906,
+        "coverage": 1.0,
+        "macro_f1": 0.6116266267,
+        "n": 457
+      },
+      "ml_with_abstain": {
+        "accuracy": 0.6608315098,
+        "accuracy_on_covered": 0.952681388,
+        "coverage": 0.693654267,
+        "macro_f1": 0.3367411574,
+        "n": 457
+      },
+      "n": 457,
+      "rules": {
+        "accuracy": 0.761487965,
+        "accuracy_on_covered": 0.8365384615,
+        "coverage": 0.9102844639,
+        "macro_f1": 0.4078724503,
+        "n": 457
+      }
+    },
+    "unseen_text": {
+      "ml": {
+        "accuracy": 0.8291139241,
+        "accuracy_ci95_wilson": [
+          0.8235219746,
+          0.83456428
+        ],
+        "accuracy_on_covered": 0.8291139241,
+        "coverage": 1.0,
+        "macro_f1": 0.8136647724,
+        "n": 17854
+      },
+      "ml_with_abstain": {
+        "accuracy": 0.5140024644,
+        "accuracy_on_covered": 0.9472543353,
+        "coverage": 0.5426235017,
+        "macro_f1": 0.6175723302,
+        "n": 17854
+      },
+      "n": 17854,
+      "rules": {
+        "accuracy": 0.6963705612,
+        "accuracy_on_covered": 0.8301949786,
+        "coverage": 0.8388036294,
+        "macro_f1": 0.7366580568,
+        "n": 17854
+      }
+    }
+  },
+  "test_unseen_share": 0.9018993736,
+  "validation": {
+    "ml_trained_on_train": {
+      "accuracy": 0.8211939047,
+      "accuracy_on_covered": 0.8211939047,
+      "coverage": 1.0,
+      "macro_f1": 0.8064657089,
+      "n": 7153
+    },
+    "rules": {
+      "accuracy": 0.6953725709,
+      "accuracy_on_covered": 0.8429079817,
+      "coverage": 0.8249685447,
+      "macro_f1": 0.7428981606,
+      "n": 7153
+    }
+  }
+}

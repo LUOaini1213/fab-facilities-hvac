@@ -1,0 +1,17 @@
+{
+  "_note": "ILLUSTRATIVE INPUTS chosen by the author to exercise the calculations. They are not design guidance and not taken from any standard or facility.",
+  "room": {"tdb_c": 22.0, "rh": 0.45, "length_m": 40.0, "width_m": 15.0, "clear_height_m": 4.0},
+  "cleanliness": {"iso_class": 5, "particle_size_um": 0.5},
+  "unidirectional": {"face_velocity_m_s": 0.40, "ceiling_coverage": 1.0, "ffu_face_area_m2": 0.72, "ffu_power_w": 150.0},
+  "well_mixed_support_area": {
+    "iso_class": 7, "particle_size_um": 0.5, "room_volume_m3": 1200.0,
+    "final_filter_efficiency": 0.9997, "oa_fraction": 0.1, "oa_prefilter_efficiency": 0.9,
+    "outdoor_conc_per_m3": 3.0e7,
+    "generation_sweep_per_s": [1.0e4, 3.0e4, 1.0e5, 3.0e5, 1.0e6, 3.0e6]
+  },
+  "mau": {"oa_flow_m3s_at_coil_leaving": 3.0, "moisture_gain_kg_s": 0.0002, "coil_leaving_db_above_dp_k": 1.0, "mau_supply_tdb_c": 18.0},
+  "recirculation": {"tool_heat_to_air_kw": 150.0, "lighting_w_m2": 15.0},
+  "plant_example": {"installed_capacity_kw": 7000.0, "chws_c": 6.5,
+                    "cooling_kw": 4000.0, "chiller_kw": 560.0, "chw_pump_kw": 70.0, "cdw_pump_kw": 80.0, "tower_kw": 45.0},
+  "tower_example": {"t_water_in_c": 37.0, "t_water_out_c": 31.5, "t_wb_c": 27.5}
+}
