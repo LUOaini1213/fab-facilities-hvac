@@ -8,11 +8,24 @@ Fifth Schedule of the Energy Conservation (Energy Management Practices) Regulati
 from __future__ import annotations
 
 import math
+from numbers import Real
 from typing import Optional
 
 import numpy as np
 
 from .units import NEA_CP_CDW_KJ_KGK, NEA_CP_CHW_KJ_KGK, RT_TO_KW
+
+
+def _finite_scalar(value, name: str) -> float:
+    if isinstance(value, (bool, np.bool_)) or not isinstance(value, Real):
+        raise ValueError(f"{name} must be a finite real number")
+    try:
+        result = float(value)
+    except (OverflowError, ValueError) as exc:
+        raise ValueError(f"{name} must be a finite real number") from exc
+    if not math.isfinite(result):
+        raise ValueError(f"{name} must be a finite real number")
+    return result
 
 # ------------------------------------------------------------------ conversions
 
@@ -33,12 +46,13 @@ def cop_from_kwe_per_kwc(kwe_per_kwc: float) -> float:
 def plant_efficiency_kwe_per_kwc(cooling_kw: float, chiller_kw: float, chw_pump_kw: float = 0.0,
                                  cdw_pump_kw: float = 0.0, tower_kw: float = 0.0) -> float:
     """System efficiency = (chillers + chilled-water pumps + condenser pumps + towers) / cooling."""
+    cooling_kw = _finite_scalar(cooling_kw, "cooling load")
     if cooling_kw <= 0:
         raise ValueError("cooling load must be positive")
-    parts = (chiller_kw, chw_pump_kw, cdw_pump_kw, tower_kw)
+    parts = tuple(_finite_scalar(x, "power") for x in (chiller_kw, chw_pump_kw, cdw_pump_kw, tower_kw))
     if any(x < 0 for x in parts):
         raise ValueError("powers must be >= 0")
-    return sum(parts) / cooling_kw
+    return _finite_scalar(sum(parts) / cooling_kw, "calculated plant efficiency")
 
 
 # ------------------------------------------------------------------ NEA MEES
@@ -57,12 +71,14 @@ MEES_SPACE_COOLING_NEW_BLDG_7_PLUS = 0.179
 
 def mees_rounded_chws(chws_c: float) -> int:
     """NEA footnote: chilled water supply temperature 'to be rounded up to the nearest whole number'."""
+    chws_c = _finite_scalar(chws_c, "chilled-water temperature")
     # round to 1e-9 first so 7.0000000001 from float noise does not jump to 8
     return int(math.ceil(round(chws_c, 9)))
 
 
 def mees_limit_kwe_per_kwc(chws_c: float, space_cooling_new_building: bool = False) -> float:
     """Maximum allowed system efficiency (kWe/kWc) at the given chilled-water supply temperature."""
+    chws_c = _finite_scalar(chws_c, "chilled-water temperature")
     if chws_c < MEES_SCOPE_MIN_CHWS_C:
         raise ValueError("chilled water below 3 degC is outside MEES scope")
     t = mees_rounded_chws(chws_c)
@@ -75,6 +91,10 @@ def mees_limit_kwe_per_kwc(chws_c: float, space_cooling_new_building: bool = Fal
 
 def mees_in_scope(installed_capacity_kw: float, chws_c: float,
                   brine_or_glycol_only: bool = False) -> bool:
+    installed_capacity_kw = _finite_scalar(installed_capacity_kw, "installed capacity")
+    chws_c = _finite_scalar(chws_c, "chilled-water temperature")
+    if installed_capacity_kw < 0:
+        raise ValueError("installed capacity must be >= 0")
     return (installed_capacity_kw >= MEES_SCOPE_MIN_CAPACITY_KW
             and chws_c >= MEES_SCOPE_MIN_CHWS_C and not brine_or_glycol_only)
 
@@ -82,6 +102,9 @@ def mees_in_scope(installed_capacity_kw: float, chws_c: float,
 def mees_check(kwe_per_kwc: float, chws_c: float, installed_capacity_kw: float,
                space_cooling_new_building: bool = False) -> dict:
     """Return limit, margin and verdict ('PASS', 'FAIL' or 'OUT_OF_SCOPE')."""
+    kwe_per_kwc = _finite_scalar(kwe_per_kwc, "system efficiency")
+    if kwe_per_kwc < 0:
+        raise ValueError("system efficiency must be >= 0")
     if not mees_in_scope(installed_capacity_kw, chws_c):
         return {"verdict": "OUT_OF_SCOPE", "limit_kwe_per_kwc": None, "margin_kwe_per_kwc": None}
     lim = mees_limit_kwe_per_kwc(chws_c, space_cooling_new_building)
@@ -125,15 +148,44 @@ def compressor_work_input_kw(measured_kw, vsd_eff: float = 1.0, motor_eff: float
 
 def heat_balance_test(cooling_kw, work_input_kw, heat_rejection_kw_, tol_pct: float = 5.0,
                       required_fraction: float = 0.80) -> dict:
-    """Heat balance within +/-tol_pct for >= required_fraction of operating points."""
-    hb = heat_balance_pct(cooling_kw, work_input_kw, heat_rejection_kw_)
+    """Heat balance for paired, same-shape operating points (or three scalars).
+
+    Missing/non-finite balances and zero heat rejection remain excluded. Negative
+    physical rates, ambiguous shapes, invalid settings and arithmetic overflow
+    raise ValueError rather than producing an acceptance verdict.
+    """
+    tol_pct = _finite_scalar(tol_pct, "heat-balance tolerance")
+    required_fraction = _finite_scalar(required_fraction, "required fraction")
+    if tol_pct < 0 or not 0 <= required_fraction <= 1:
+        raise ValueError("tolerance must be >= 0 and required fraction must be in [0, 1]")
+    raw = (cooling_kw, work_input_kw, heat_rejection_kw_)
+    if any(np.iscomplexobj(x) for x in raw):
+        raise ValueError("heat rates must be real numbers")
+    try:
+        values = tuple(np.asarray(x, dtype=float) for x in raw)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ValueError("heat rates must be numeric arrays") from exc
+    if len({x.shape for x in values}) != 1:
+        raise ValueError("heat-rate arrays must have the same shape; broadcasting is not allowed")
+    if any(np.any(np.isfinite(x) & (x < 0)) for x in values):
+        raise ValueError("physical heat rates must be >= 0")
+    try:
+        with np.errstate(over="raise"):
+            hb = heat_balance_pct(*values)
+    except FloatingPointError as exc:
+        raise ValueError("heat-balance calculation overflow") from exc
     hb = hb[np.isfinite(hb)]
     if hb.size == 0:
         raise ValueError("no valid operating points")
     frac = float(np.mean(np.abs(hb) <= tol_pct))
+    try:
+        with np.errstate(over="raise"):
+            median = float(np.median(hb))
+    except FloatingPointError as exc:
+        raise ValueError("heat-balance median overflow") from exc
     return {"n_points": int(hb.size), "fraction_within": frac,
             "passes": frac >= required_fraction,
-            "median_pct": float(np.median(hb))}
+            "median_pct": median}
 
 
 def mv_system_uncertainty_pct(u_t_supply_k: float, u_t_return_k: float, delta_t_chw_k: float,
