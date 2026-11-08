@@ -1,5 +1,17 @@
 # fab-facilities-hvac
 
+## At a glance
+
+- **Part A, worked example** (illustrative inputs): a 600 m² ISO 5 bay needs 834 FFUs and 489.6 kW (139.2 RT) of cooling at the governing (enthalpy) design point; the example plant at 0.18875 kWe/kWc = 0.664 kW/RT passes the NEA MEES limit of 0.191 ([`bay_example.json`](results/bay_example.json)).
+- **Part C, fault detection** on the LBNL simulated chiller plant (interleaved months, threshold fixed on training data): gradient boosting detects chiller fouling in 0.938 of faulted hours, against 0.030 for the physics-residual baseline, with alarms in 0 fault-free test hours, but tower fouling only 0.024 ([`fdd_detection_by_type.csv`](results/fdd_detection_by_type.csv)).
+- **Part C, season-block check**: trained on July–December and tested on January–June, the same kind of threshold alarms in 39.1 % of fault-free hours, so the interleaved-month figures are an in-season estimate ([`fdd_season_split.csv`](results/fdd_season_split.csv)).
+- **Part D, boiler reliability** on NYC Parks work orders: censored Weibull β = 0.40 (by-boiler bootstrap 0.35–0.48) over 432 uptime intervals, a decreasing hazard, so age-based replacement has no finite optimum ([`maintenance_weibull_boiler.json`](results/maintenance_weibull_boiler.json)).
+- **Part D, failure-mode text classifier**: 0.838 accuracy on 19 796 test orders (majority class 0.256); abstaining below p = 0.87 labels 57.3 % of them at 0.949 accuracy ([`maintenance_textclass.json`](results/maintenance_textclass.json)).
+- **Limits**: the VBA port (Part B) has never been run in Excel; Part C is one simulated year with no unseen-year test; the work orders record no equipment downtime, so restore time is the time an order was open.
+- The numbers in this list are checked against the files by `tests/test_readme_numbers.py`.
+
+## Overview
+
 Engineering calculations for cleanroom HVAC and chilled-water plants, the same core
 calculations as a VBA module whose Python/VBA parity check is scripted but has not yet been run
 in Excel, fault detection and diagnosis (FDD) on a public simulated chiller-plant dataset, and
@@ -117,7 +129,10 @@ kWe/kWc, COP, plant efficiency, MEES limit and check, heat balance, M&V uncertai
 range/approach/effectiveness, and PsychroLib-equivalent saturation pressure, humidity ratio
 (from RH, wet bulb, dew point), enthalpy, dew point and wet bulb — plus `FillCalcSheet`, which
 builds a labelled "Calculator" sheet that uses them. The functions are written to return
-`#VALUE!` where Python raises `ValueError`; the parity grid includes those cases. The
+`#VALUE!` where Python raises `ValueError`; the parity grid includes those cases (for
+`FH_MEES_CHECK`, negative efficiency or capacity, rejected before the scope test as in
+`chiller.mees_check`). Python's non-finite-input guards have no VBA counterpart because a
+worksheet cell cannot hold NaN or infinity. The
 psychrometric functions port PsychroLib's coefficients and algorithms (MIT licence; notice in
 the `.bas` header and in `THIRD_PARTY_NOTICES.md`).
 
@@ -137,7 +152,8 @@ python scripts/vba_parity.py     # fixed grid over all FH_* functions (incl. inv
 
 `tests/test_vba_golden.py` then replays the recorded VBA outputs against Python in CI
 (rel. tolerance 1e-9; invalid inputs must be rejected by both). Without Excel, CI already checks
-that every `Public Function FH_*` in the `.bas` has a Python reference (`tests/test_vba_reference.py`).
+that every `Public Function FH_*` in the `.bas` has a Python reference and that `FH_MEES_CHECK`
+contains its input guard (a text check; `tests/test_vba_reference.py`).
 
 ## Part C — fault detection and diagnosis
 
@@ -446,7 +462,7 @@ threshold it flags 36.7 / 0 / 0 % (`maintenance_8d_*`, `fdd_detection_daily.csv`
 
 ## Tests
 
-`pytest` collects 256 tests: 253 run everywhere, the 2 VBA golden-replay tests skip until
+`pytest` collects 349 tests: 346 run everywhere, the 2 VBA golden-replay tests skip until
 `results/vba_parity.csv` exists, and 1 test checking the FDD cache against
 `results/fdd_scenarios.csv` runs only when `LBNL_FDD_CACHE` is set. Test values are deliberately
 asymmetric (e.g. 0.18875 kWe/kWc, 6.01 °C, 102.4 m² × 0.45 / 0.72 m² to provoke float round-up)
@@ -457,7 +473,7 @@ optimum against direct minimisation and Nakagawa's eq. 2.5, the Wilson interval 
 `binomtest`, the cluster bootstrap against a hand re-computation, the metrics against
 hand-computed cases.
 
-Mutation testing (`scripts/mutate.py`, `results/mutation_report.json`): 129 deliberate bugs are
+Mutation testing (`scripts/mutate.py`, `results/mutation_report.json`): 129 deliberate bugs were
 applied one at a time with the byte-for-byte golden-output test excluded, so each must be caught by
 a unit test. 127 of 127 non-equivalent mutants are killed, 50 of them in `fabhvac/maintenance/`
 and 32 in `fabhvac/fdd/`; they include the season split, two-stage diagnosis, day-level
@@ -468,6 +484,13 @@ mutants are equivalent and documented
 in the script: `t <= 9` → `t < 9` in the MEES lookup (the progressive formula gives the same
 0.185 at 9 °C) and removing the gradient-boosting seed (no random numbers are drawn with early
 stopping off, all features used and fewer than 200 000 training rows).
+
+That full report predates the input checks merged in PR #1 (non-finite, boolean and negative
+inputs in `fabhvac/chiller.py`); each of its snippets still applies exactly once to the current
+code. Seven mutants for those checks and for the invalid `FH_MEES_CHECK` cases in the VBA
+parity grid were added afterwards and run on their own (`python scripts/mutate.py --only guard
+--report results/mutation_report_guards.json`): 7 of 7 guard mutants are killed. A full rerun of
+all 136 mutants has not been recorded yet.
 
 ## Data and attribution
 
