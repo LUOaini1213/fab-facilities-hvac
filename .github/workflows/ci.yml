@@ -19,7 +19,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -e ".[dev,fdd]"
-      - name: Tests (golden outputs, VBA golden replay; data-dependent tests skip)
+      - name: Tests (golden outputs; VBA golden replay and data-dependent tests skip)
         run: pytest -q
       - name: Results reproduce byte-for-byte on Linux
         run: |

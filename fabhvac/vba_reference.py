@@ -103,7 +103,10 @@ def grid():
         g.append(("FH_MEES_LIMIT", (t, True)))
     g += [("FH_MEES_CHECK", (0.18875, 6.5, 7000.0, False)), ("FH_MEES_CHECK", (0.193, 6.5, 7000.0, False)),
           ("FH_MEES_CHECK", (0.193, 5.2, 7000.0, False)), ("FH_MEES_CHECK", (0.25, 6.5, 1000.0, False)),
-          ("FH_MEES_CHECK", (0.181, 6.5, 2000.0, True)), ("FH_MEES_CHECK", (0.2, 2.5, 9000.0, False))]
+          ("FH_MEES_CHECK", (0.181, 6.5, 2000.0, True)), ("FH_MEES_CHECK", (0.2, 2.5, 9000.0, False)),
+          # invalid: negative efficiency / capacity are rejected before the scope test
+          ("FH_MEES_CHECK", (-0.1, 7.0, 2000.0, False)), ("FH_MEES_CHECK", (0.19, 7.0, -5.0, False)),
+          ("FH_MEES_CHECK", (-0.1, 6.5, 500.0, False))]
     g += [("FH_HEAT_BALANCE_PCT", (1000.0, 180.0, 1150.0)), ("FH_HEAT_BALANCE_PCT", (812.3, 160.4, 1003.9)),
           ("FH_HEAT_BALANCE_PCT", (1.0, 1.0, 0.0))]
     g += [("FH_MV_UNCERTAINTY", (0.05, 0.05, 5.5, 1.0, 2.0)), ("FH_MV_UNCERTAINTY", (0.03, 0.07, 3.1, 0.8, 1.5)),

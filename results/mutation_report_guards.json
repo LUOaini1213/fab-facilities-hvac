@@ -1,0 +1,45 @@
+{
+  "equivalent": [],
+  "killed": 7,
+  "mutants": [
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "guard_finite_allows_inf",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "guard_finite_allows_bool",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "guard_mees_negative_eff",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "guard_mees_negative_capacity",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "guard_hb_negative_rates",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/chiller.py",
+      "id": "guard_hb_broadcast",
+      "status": "killed"
+    },
+    {
+      "file": "fabhvac/vba_reference.py",
+      "id": "guard_vba_grid_no_invalid_mees",
+      "status": "killed"
+    }
+  ],
+  "not_applied": [],
+  "only": "guard",
+  "survivors": [],
+  "total_applied": 7
+}

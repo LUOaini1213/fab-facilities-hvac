@@ -131,7 +131,13 @@ def window_aggregate(raw: pd.DataFrame, freq: str = "1h") -> pd.DataFrame:
 
 
 def heat_balance_fraction(raw: pd.DataFrame, tol_pct: float = 5.0, min_cond_kw: float = 1.0) -> dict:
-    """NEA-style heat-balance test on 1-minute rows where the plant is rejecting heat."""
+    """NEA-style heat-balance test on 1-minute rows where the plant is rejecting heat.
+
+    This re-implements the fraction instead of calling ``chiller.heat_balance_test`` on
+    purpose: that function raises ``ValueError`` on any negative heat rate, while raw sensor
+    rows can carry small negative evaporator loads, and the published figure
+    (``hb_*`` columns of ``results/fdd_energy.csv``) was computed this way. On physical, non-negative
+    operating points the two agree exactly (``tests/test_fdd.py``)."""
     d = derive_signals(raw)
     op = (d["q_cond_kw"] > min_cond_kw) & (d["chiller_kw"] > 0)
     hb = d.loc[op, "heat_balance_pct"].to_numpy()

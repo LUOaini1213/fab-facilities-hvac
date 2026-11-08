@@ -173,6 +173,8 @@ End Function
 
 Public Function FH_MEES_CHECK(ByVal kwePerKwc As Double, ByVal chwsC As Double, ByVal installedCapacityKw As Double, _
                               Optional ByVal spaceCoolingNewBuilding As Boolean = False) As Variant
+    ' Same order as chiller.mees_check: negative efficiency or capacity is rejected before the scope test
+    If kwePerKwc < 0 Or installedCapacityKw < 0 Then FH_MEES_CHECK = ErrValue(): Exit Function
     If installedCapacityKw < 1055 Or chwsC < 3 Then
         FH_MEES_CHECK = "OUT_OF_SCOPE": Exit Function
     End If

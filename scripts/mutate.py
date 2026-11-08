@@ -5,7 +5,8 @@ unit test rather than by "results changed". Every source file is restored after 
 (also on Ctrl-C). Output: results/mutation_report.json
 
     python scripts/mutate.py            # all mutants
-    python scripts/mutate.py --only fdd # mutants whose id starts with 'fdd'
+    python scripts/mutate.py --only fdd # mutants whose id starts with 'fdd' (printed, not saved)
+    python scripts/mutate.py --only guard --report results/mutation_report_guards.json
 """
 
 from __future__ import annotations
@@ -56,6 +57,14 @@ MUTANTS = [
     ("hb_tolerance_strict", "fabhvac/chiller.py", "np.abs(hb) <= tol_pct", "np.abs(hb) < tol_pct"),
     ("hb_fraction_strict", "fabhvac/chiller.py", "\"passes\": frac >= required_fraction", "\"passes\": frac > required_fraction"),
     ("hb_keep_nonfinite", "fabhvac/chiller.py", "    hb = hb[np.isfinite(hb)]\n", ""),
+    # input guards added in PR #1 (chiller input integrity) and the VBA parity grid's invalid cases
+    ("guard_finite_allows_inf", "fabhvac/chiller.py", "    if not math.isfinite(result):\n        raise", "    if False:\n        raise"),
+    ("guard_finite_allows_bool", "fabhvac/chiller.py", "if isinstance(value, (bool, np.bool_)) or not isinstance(value, Real):", "if not isinstance(value, Real):"),
+    ("guard_mees_negative_eff", "fabhvac/chiller.py", "    if kwe_per_kwc < 0:\n        raise ValueError(\"system efficiency", "    if kwe_per_kwc < -1:\n        raise ValueError(\"system efficiency"),
+    ("guard_mees_negative_capacity", "fabhvac/chiller.py", "    if installed_capacity_kw < 0:\n", "    if installed_capacity_kw < -1e9:\n"),
+    ("guard_hb_negative_rates", "fabhvac/chiller.py", "    if any(np.any(np.isfinite(x) & (x < 0)) for x in values):\n", "    if False:\n"),
+    ("guard_hb_broadcast", "fabhvac/chiller.py", "    if len({x.shape for x in values}) != 1:\n", "    if False:\n"),
+    ("guard_vba_grid_no_invalid_mees", "fabhvac/vba_reference.py", "          (\"FH_MEES_CHECK\", (-0.1, 6.5, 500.0, False))]", "          ]"),
     ("mv_linear_sum", "fabhvac/chiller.py", "return math.sqrt(d_ut ** 2 + u_flow_pct ** 2 + u_power_pct ** 2)", "return d_ut + u_flow_pct + u_power_pct"),
     ("motor_eff_dropped", "fabhvac/chiller.py", "* motor_eff * vsd_eff", "* vsd_eff"),
     ("ct_eff_denominator", "fabhvac/tower.py", "denom = t_in - t_wb_", "denom = np.asarray(t_water_out, dtype=float) - t_wb_"),
@@ -176,7 +185,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", default="")
     ap.add_argument("--timeout", type=int, default=1800)
-    ap.add_argument("--report", default=str(ROOT / "results" / "mutation_report.json"))
+    ap.add_argument("--report", default=None,
+                    help="output JSON; default results/mutation_report.json for a full run, none with --only")
     a = ap.parse_args()
     mutants = [m for m in MUTANTS if m[0].startswith(a.only)]
     if not run_tests(a.timeout):
@@ -211,8 +221,11 @@ def main() -> int:
               "survivors": [r["id"] for r in applied if r["status"] == "survived"],
               "equivalent": [r for r in results if r["status"].startswith("equivalent")],
               "mutants": results}
-    if not a.only:
-        write_json(a.report, report)
+    if a.only:
+        report["only"] = a.only
+    report_path = a.report or (None if a.only else str(ROOT / "results" / "mutation_report.json"))
+    if report_path:
+        write_json(report_path, report)
     else:
         print(json.dumps(report, indent=1))
     print(f"killed {killed}/{len(applied)}")

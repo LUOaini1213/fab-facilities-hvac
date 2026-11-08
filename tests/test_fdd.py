@@ -108,6 +108,25 @@ def test_window_aggregate_and_heat_balance_fraction():
     assert hb_edge["fraction_within"] > np.mean(np.abs(d["heat_balance_pct"]) < v)
 
 
+def test_heat_balance_fraction_agrees_with_the_nea_heat_balance_test():
+    """heat_balance_fraction re-implements the +/-5 % fraction for 1-minute rows without
+    heat_balance_test's input guards (which raise on any negative heat rate); on physical,
+    non-negative operating points the two must give the same numbers."""
+    from fabhvac import chiller
+    rows = pd.concat([_row(CHL_POW_1=1.0 + 0.004 * k ** 2) for k in range(120)], ignore_index=True)
+    rows.insert(0, "Datetime", pd.date_range("2018-03-01 01:00", periods=120, freq="1min"))
+    d = fd.derive_signals(rows)
+    op = (d["q_cond_kw"] > 1.0) & (d["chiller_kw"] > 0)
+    assert op.all() and (d.loc[op, "q_evap_kw"] >= 0).all()
+    ref = chiller.heat_balance_test(d.loc[op, "q_evap_kw"].to_numpy(), d.loc[op, "chiller_kw"].to_numpy(),
+                                    d.loc[op, "q_cond_kw"].to_numpy(), tol_pct=5.0)
+    hb = fd.heat_balance_fraction(rows, tol_pct=5.0)
+    assert hb["n_points"] == ref["n_points"]
+    assert hb["fraction_within"] == pytest.approx(ref["fraction_within"], abs=0)
+    assert hb["median_pct"] == pytest.approx(ref["median_pct"], rel=1e-12)
+    assert 0 < hb["fraction_within"] < 1  # rows on both sides of the +/-5 % band
+
+
 # ---------------------------------------------------------------- splits and metrics
 def test_month_split_buffer_and_disjoint():
     idx = pd.date_range("2018-01-01 01:00", "2018-12-31 23:00", freq="1h")
